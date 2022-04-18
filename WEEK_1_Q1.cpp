@@ -1,38 +1,33 @@
-#include <iostream>
+/*Given an already sorted array of positive integers ,design an algorithm and implement it using a program to find whether the given key is present int the arrat or nit .
+Also find the total number of comparision for each case.*/ 
+
+//Using BINARY SEARCH
+#include<iostream>
 using namespace std;
-
-int binary_search(int arr[], int num, int n)
-{
-    int ub=n,lb=0,mid=0;
-    while( lb <= ub )
-    {
-        mid = lb + (ub-lb)/2;
-        cout<<lb<<" " << ub << " "<< mid<<endl;
-        if(arr[mid] == num)
-            return 1;
-        if(arr[mid] < num)
-            lb = mid + 1;
-        else
-            ub = mid - 1;
-    }
-    return 0;
-}
-
 int main()
 {
-    int a[10], num=0, ans=0;
-    cout<<"Enter the array in sorted form : ";
-    for(int i=0;i<6;i++)
+    int i,j=0,k,l,u,m,n;
+    cin>>n;
+    int a[n];
+    for(i=0;i<n;i++)
         cin>>a[i];
-
-    cout<<"Enter the number to be searched : ";
-    cin>>num;
-
-    ans = binary_search(a,num,5);
-    
-    if(ans==1)
-        cout<<num<<" is present in the array"<<endl;
-    if(ans==0)
-        cout<<num<<" is not present in the array"<<endl;
+    cin>>k;
+    l=0;
+    u=n-1;
+    while(l<=u)
+    {
+        m=(u+l)/2;
+        if(a[m]==k)
+        {
+            cout<<"Present"<<endl;
+            break;
+        }
+        else if(k<a[m])
+            u=m-1;
+        else
+            l=m+1;
+        j++;
+    }
+    cout<<j<<" comparisons";
 
 }
